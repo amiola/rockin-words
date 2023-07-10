@@ -1,0 +1,30 @@
+.home{
+    text-align: center;
+
+    h1{
+        margin: 10rem;
+        font-size: 3rem;
+    }
+    h2{
+        margin: 5rem;
+        font-size: 2.5rem;
+    }
+    .mode-btns{
+        padding: 1rem;
+        @include flex(center, center, row);
+    }
+
+    .btn{
+        display: block;
+        border: none;
+        border-radius: 2rem;
+        background: $color2;
+        padding: 2rem;
+        margin: 1rem;
+        font-size: 2rem;
+
+        &:hover{
+            transform: scale(1.05);
+        }
+    }
+}

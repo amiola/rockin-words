@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  background-color: #F7F7F7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto", sans-serif;
+}
+
+p, label, a, input {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.home {
+  text-align: center;
+}
+.home h1 {
+  margin: 10rem;
+  font-size: 3rem;
+}
+.home h2 {
+  margin: 5rem;
+  font-size: 2.5rem;
+}
+.home .mode-btns {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.home .btn {
+  display: block;
+  border: none;
+  border-radius: 2rem;
+  background: #21d4c5;
+  padding: 2rem;
+  margin: 1rem;
+  font-size: 2rem;
+}
+.home .btn:hover {
+  transform: scale(1.05);
+}
+
+.game h1 {
+  font-size: 3rem;
+}
+.game .word {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 2rem;
+  margin: 2rem;
+}
+.game .word h2 {
+  font-size: 5rem;
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 1rem;
+  background: #21d4c5;
+}/*# sourceMappingURL=index.css.map */
