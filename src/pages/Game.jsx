@@ -7,27 +7,34 @@ const Game = () => {
     const {wordsArr} = useContext(Context)
 
     const [randomWord, setRandomWord]=useState(0);
-    const [wordToUse, setWordToUse]=useState();
+    const [wordToUse, setWordToUse]=useState({});
 
 useEffect(()=>{
   setRandomWord(Math.floor(Math.random()*wordsArr.length));
 },[]);
 
-    const getWordToUse = ()=>{
-      
+useEffect(()=>{
+  setWordToUse(getWordToUse(randomWord));
+},[randomWord])
+
+useEffect(()=>{
+  console.log(wordToUse)
+},[wordToUse])
+
+    const getWordToUse = (wordIndex)=>{
       var letterIndex = '';
       var correctLetter = '';
       if(gameName === 'vowel'){
-        const randomI = Math.floor(Math.random()*wordsArr[randomWord].vowels.length);
-        letterIndex = wordsArr[randomWord].vowels[randomI].index;
-        correctLetter = wordsArr[randomWord].vowels[randomI];
+        const randomI = Math.floor(Math.random()*wordsArr[wordIndex].vowels.length);
+        letterIndex = wordsArr[wordIndex].vowels[randomI].index;
+        correctLetter = wordsArr[wordIndex].vowels[randomI];
       }else if(gameName === 'consonant'){
-        const randomI = Math.floor(Math.random()*wordsArr[randomWord].consonants.length);
-        letterIndex = wordsArr[randomWord].consonants[randomI].index;
-        correctLetter = wordsArr[randomWord].consonants[randomI];
+        const randomI = Math.floor(Math.random()*wordsArr[wordIndex].consonants.length);
+        letterIndex = wordsArr[wordIndex].consonants[randomI].index;
+        correctLetter = wordsArr[wordIndex].consonants[randomI];
       }
 
-      const wordToGuess = wordsArr[randomWord].splittedWord.map((letter, i)=>{
+      const wordToGuess = wordsArr[wordIndex].splittedWord.map((letter, i)=>{
         if(letterIndex === i){
           return '_';
         }else{
@@ -39,9 +46,9 @@ useEffect(()=>{
         word: wordToGuess,
         correctLetter: correctLetter
       }
-      console.log(wordToUse)
       return wordToUse;
     };
+
 
 
     const getLettersToChoose = () => {
@@ -52,7 +59,7 @@ useEffect(()=>{
       }else if(gameName === 'consonant'){
         const consonants = 'B, C, D, F, G, H, J, K, L, M, N, P, Q, R, S, T, V, W, X, Y, Z';
         const consArr = consonants.split(', ');
-
+        
       }
     }
 
@@ -61,7 +68,7 @@ useEffect(()=>{
     <section className="game">
     <h1>Game: {gameName}</h1>
     <div className="word">
-    {getWordToUse().word.map((letter, i)=>(
+    {wordToUse.word && wordToUse.word.map((letter, i)=>(
       <h2 key={i}>{letter}</h2>
     ))}
     </div>
