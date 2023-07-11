@@ -1,6 +1,6 @@
 import React from 'react'
 import Context from './Context'
-import { WORDS } from '../assets/words'
+import { WORDS } from '../assets/data'
 
 const Provider = ({children}) => {
   
@@ -27,13 +27,54 @@ const Provider = ({children}) => {
       consonants: consonants
     }
   })
-console.log(wordsArr)
+// console.log(wordsArr)
+
+const randomNumber = (arrLength)=>{
+  const random = Math.floor(Math.random() * arrLength);
+  return random;
+}
+
+function getRandomElementsFromArray(array, numElements) {
+  if (numElements >= array.length) {
+    return array;
+  }
+  
+  const result = [];
+  const indices = new Set();
+
+  while (indices.size < numElements) {
+    const randomIndex = randomNumber(array.length);
+    indices.add(randomIndex);
+  }
+
+  for (const index of indices) {
+    result.push(array[index]);
+  }
+  console.log(result)
+  return result;
+}
+// getRandomElementsFromArray(['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L'], 3);
+
+const insertCorrectLetter = (array, letter)=>{
+  if(array.includes(letter)){
+    return array;
+  }else{
+    const randomI = randomNumber(array.length);
+    array[randomI]=letter;
+    return array;
+  }
+}
+// console.log(insertCorrectLetter(['B', 'C', 'D', 'F'], 'C'));
+// console.log(insertCorrectLetter(['B', 'C', 'D', 'F'], 'H'));
 
   return (
     <>
     <Context.Provider
     value={{
-      wordsArr
+      wordsArr,
+      getRandomElementsFromArray,
+      randomNumber,
+      insertCorrectLetter
     }}
     >
         {children}

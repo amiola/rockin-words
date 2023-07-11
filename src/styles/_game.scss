@@ -1,6 +1,12 @@
 .game{
+    margin-top: 2rem;
+    text-align: center;
     h1{
         font-size: 3rem;
+    }
+
+    h4{
+        font-size: 2rem;
     }
 
     .word{
@@ -11,10 +17,38 @@
         h2{
             font-size: 5rem;
             padding: 2rem;
+            margin: 0.5rem;
+        }
+        .missing{
+            border-radius: 0.5rem;
+            border: dotted 1px black;
+            background: $color3;
+        }
+        .correct{
+            border-radius: 0.5rem;
+            border: solid 2px green;
+            background: palegreen;
+            transform: scale(1.25);
+            padding: 1rem;
+        }
+    }
+
+    .letters{
+        @include flex(center, center, row);
+        padding: 2rem;
+        margin: 2rem;
+        button{
+            font-size: 5rem;
+            padding: 2rem;
             margin: 2rem;
             border-radius: 1rem;
+            border: none;
             background: $color2;
+            cursor: pointer;
 
+            &:hover{
+                transform: scale(1.05);
+            }
         }
     }
 }

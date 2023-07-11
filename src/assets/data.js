@@ -9,4 +9,6 @@ export const WORDS = [
 "FIRE",
 "WIND",
 "FOOD"
-]
+];
+
+export const NUMBER_OF_OPTIONS = 4;

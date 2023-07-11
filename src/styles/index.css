@@ -53,8 +53,15 @@ a {
   transform: scale(1.05);
 }
 
+.game {
+  margin-top: 2rem;
+  text-align: center;
+}
 .game h1 {
   font-size: 3rem;
+}
+.game h4 {
+  font-size: 2rem;
 }
 .game .word {
   display: flex;
@@ -67,7 +74,37 @@ a {
 .game .word h2 {
   font-size: 5rem;
   padding: 2rem;
+  margin: 0.5rem;
+}
+.game .word .missing {
+  border-radius: 0.5rem;
+  border: dotted 1px black;
+  background: rgba(200, 203, 206, 0.5);
+}
+.game .word .correct {
+  border-radius: 0.5rem;
+  border: solid 2px green;
+  background: palegreen;
+  transform: scale(1.25);
+  padding: 1rem;
+}
+.game .letters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 2rem;
+  margin: 2rem;
+}
+.game .letters button {
+  font-size: 5rem;
+  padding: 2rem;
   margin: 2rem;
   border-radius: 1rem;
+  border: none;
   background: #21d4c5;
+  cursor: pointer;
+}
+.game .letters button:hover {
+  transform: scale(1.05);
 }/*# sourceMappingURL=index.css.map */
