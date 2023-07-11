@@ -3,16 +3,51 @@
     text-align: center;
     h1{
         font-size: 3rem;
+        span{
+             color: rgb(212, 26, 26);
+        }
     }
 
     h4{
         font-size: 2rem;
     }
 
+    .total-score{
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 2.5rem 5rem;
+        font-size: 2rem;
+    }
+    .rounds{
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 2.5rem 5rem;
+        font-size: 2rem;
+    }
+    .new-game{
+        position: absolute;
+        top: 5rem;
+        left: 0;
+        margin: 2.5rem 6rem;
+        padding: 0.5rem 1rem;
+        font-size: 2rem;
+        border: none;
+        border-radius: 0.5rem;
+        background: $color4;
+        color: white;
+        cursor: pointer;
+
+        &:hover{
+            transform: scale(1.05);
+        }
+    }
+
     .word{
         @include flex(center, center, row);
         padding: 2rem;
-        margin: 2rem;
+        margin: 1rem;
 
         h2{
             font-size: 5rem;
@@ -36,7 +71,6 @@
     .letters{
         @include flex(center, center, row);
         padding: 2rem;
-        margin: 2rem;
         button{
             font-size: 5rem;
             padding: 2rem;
@@ -49,6 +83,39 @@
             &:hover{
                 transform: scale(1.05);
             }
+        }
+    }
+
+    .correct-message{
+        width: 50%;
+        margin: auto;
+        font-size: 3.5rem;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        background-color: palegreen;
+        color: green;
+    }
+    .wrong-message{
+        font-size: 3rem;
+    }
+
+    .points{
+        font-size: 2rem;
+        margin: 1rem;
+    }
+
+    .next{
+        margin: 2rem;
+        padding: 1rem 2rem;
+        font-size: 2rem;
+        color: white;
+        border: 1px white;
+        border-radius: 0.5rem;
+        background: $color4;
+        cursor: pointer;
+
+        &:hover{
+            transform: scale(1.05);
         }
     }
 }

@@ -12,3 +12,5 @@ export const WORDS = [
 ];
 
 export const NUMBER_OF_OPTIONS = 4;
+
+export const NUMBER_OF_ROUNDS = 5;

@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Context from './Context'
-import { WORDS } from '../assets/data'
+import { NUMBER_OF_ROUNDS, WORDS } from '../assets/data'
+import { useNavigate } from 'react-router-dom';
 
 const Provider = ({children}) => {
+
+  const [totalScore, setTotalScore]=useState(0);
+  const [round, setRound]=useState(0);
+  const [maxRounds, setMaxRounds]=useState(0);
+  const [wordsArr, setWordsArr]=useState([]);
+
+  const navigate = useNavigate();
   
-  const wordsArr = WORDS.map(word=>{
+  const origWordsArr = WORDS.map(word=>{
     const wordSplit = word.split('');
     const vowels = [];
     const consonants = [];
@@ -50,7 +58,7 @@ function getRandomElementsFromArray(array, numElements) {
   for (const index of indices) {
     result.push(array[index]);
   }
-  console.log(result)
+  // console.log(result)
   return result;
 }
 // getRandomElementsFromArray(['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L'], 3);
@@ -67,14 +75,41 @@ const insertCorrectLetter = (array, letter)=>{
 // console.log(insertCorrectLetter(['B', 'C', 'D', 'F'], 'C'));
 // console.log(insertCorrectLetter(['B', 'C', 'D', 'F'], 'H'));
 
+const init = ()=>{
+  setWordsArr(origWordsArr);
+  setTotalScore(0);
+  setRound(1);
+  setMaxRounds(NUMBER_OF_ROUNDS < origWordsArr.length ? NUMBER_OF_ROUNDS: origWordsArr.length );
+}
+
+useEffect(()=>{
+  init();
+},[])
+
+useEffect(()=>{
+  console.log(wordsArr)
+},[wordsArr])
+
+const newGame = ()=>{
+  init();
+  navigate('/');
+}
+
   return (
     <>
     <Context.Provider
     value={{
       wordsArr,
+      setWordsArr,
       getRandomElementsFromArray,
       randomNumber,
-      insertCorrectLetter
+      insertCorrectLetter,
+      totalScore,
+      setTotalScore,
+      round,
+      setRound,
+      maxRounds,
+      newGame
     }}
     >
         {children}
