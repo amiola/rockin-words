@@ -4,7 +4,12 @@ import Context from '../context/Context'
 
 const Home = () => {
 
-  const {setGame}=useContext(Context);
+  const {setGame, gameSound}=useContext(Context);
+
+  const goToGame = (game)=>{
+    setGame(game);
+    gameSound.play();
+  }
 
   return (
     <>
@@ -12,9 +17,9 @@ const Home = () => {
         <h1>Welcome to Rockin Words!</h1>
         <h2>Select game mode:</h2>
         <div className="mode-btns">
-            <NavLink to='/game/cvc-words' className='btn c1' onClick={()=>setGame(0)}>CVC Words</NavLink>
-            <NavLink to='/game/consonant' className='btn c2' onClick={()=>setGame(1)}>Missing Consonant</NavLink>
-            <NavLink to='/game/vowel' className='btn c3' onClick={()=>setGame(1)}>Missing Vowel</NavLink>
+            <NavLink to='/game/cvc-words' className='btn c1' onClick={()=>{goToGame(0)}}>CVC Words</NavLink>
+            <NavLink to='/game/consonant' className='btn c2' onClick={()=>{goToGame(1)}}>Missing Consonant</NavLink>
+            <NavLink to='/game/vowel' className='btn c3' onClick={()=>{goToGame(1)}}>Missing Vowel</NavLink>
         </div>
     </section>
     </>

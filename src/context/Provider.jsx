@@ -19,6 +19,13 @@ const Provider = ({children}) => {
   const consonants = 'B, C, D, F, G, H, J, K, L, M, N, P, Q, R, S, T, V, W, X, Y, Z';
   const consonantsArr = consonants.split(', ');
   const allLettersArr = [...vowelsArr, ...consonantsArr];
+
+  //Sounds
+  let correctSound = new Audio('/correct-ping.mp3');
+  let wrongSound = new Audio('/error.mp3');
+  let winSound = new Audio('/win.mp3');
+  let nextSound = new Audio('/next.mp3');
+  let gameSound = new Audio('/game.mp3');
   
   const getWordsArr =()=>{
     const wordsArr = WORDS[game].map(word=>{
@@ -176,6 +183,7 @@ useEffect(()=>{
 const newGame = ()=>{
   init();
   navigate('/');
+  nextSound.play();
 }
 
   return (
@@ -192,7 +200,8 @@ const newGame = ()=>{
       newGame,
       getWordToUse,
       getLettersToChoose,
-      game, setGame
+      game, setGame,
+      correctSound, wrongSound, winSound, nextSound, gameSound
     }}
     >
         {children}

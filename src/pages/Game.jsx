@@ -16,7 +16,9 @@ const Game = () => {
       maxRounds,
       newGame,
       getWordToUse,
-      getLettersToChoose} = useContext(Context)
+      getLettersToChoose,
+      correctSound, wrongSound, winSound, nextSound
+    } = useContext(Context)
 
     const [randomWord, setRandomWord]=useState(0);
     const [wordToUse, setWordToUse]=useState({});
@@ -28,9 +30,6 @@ const Game = () => {
     const [score, setScore]=useState(0);
     
     const navigate = useNavigate();
-    
-    //Sounds
-    let correctSound = new Audio('/correct-ping.mp3');
 
     const myColors = [
     {backgroundColor: 'white', color:'black', border: '1px dotted gray'}, 
@@ -110,6 +109,7 @@ useEffect(()=>{
           class: 'wrong-message'
         });
         setScore(score-1);
+        wrongSound.play();
       }
     }
 
@@ -117,8 +117,10 @@ useEffect(()=>{
       if(round < NUMBER_OF_ROUNDS){
         init();
         setRound(round+1);
+        nextSound.play();
       }else{
         setRound(0);
+        winSound.play();
         navigate('/end');
       }
       
