@@ -56,22 +56,25 @@ useEffect(()=>{
   }else if(gameName === 'consonant'){
     const randomI = randomNumber(wordsArr[randomWord].consonants.length);
     setCorrectLetter(wordsArr[randomWord].consonants[randomI]);
+  }else if(gameName === 'cvc-words'){
+    const randomI = randomNumber(wordsArr[randomWord].allLetters.length);
+    setCorrectLetter(wordsArr[randomWord].allLetters[randomI]);
   }
-  // console.log('1: ', randomWord);
+  // console.log('Random word: ', randomWord);
 },[randomWord]);
 
 useEffect(()=>{
   setWordToUse(getWordToUse(randomWord, correctLetter.index));
   setLetters(getLettersToChoose(correctLetter.letter, gameName));
-  // console.log('2:', correctLetter);
+  // console.log('Correct Letter: ', correctLetter);
 },[correctLetter])
 
 // useEffect(()=>{
-//   console.log('3: ', wordToUse);
+//   console.log('Word to use: ', wordToUse);
 // },[wordToUse])
 
 // useEffect(()=>{
-//   console.log(letters)
+//   console.log('Letters: ', letters)
 // },[letters])
 
 // useEffect(()=>{

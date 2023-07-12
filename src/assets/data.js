@@ -1,13 +1,13 @@
 export const WORDS = [
-    // [
-    //     "CAT",
-    //     "BAR", 
-    //     "PIG", 
-    //     "BUT", 
-    //     "HIM", 
-    //     "HER"
-    // ],
-    // [
+    [
+        "CAT",
+        "BAR", 
+        "PIG", 
+        "BUT", 
+        "HIM", 
+        "HER"
+    ],
+    [
         "SUN",
         "MOON",
         "STAR",
@@ -18,7 +18,7 @@ export const WORDS = [
         "FIRE",
         "WIND",
         "FOOD"
-    // ]
+    ]
 ];
 
 export const NUMBER_OF_OPTIONS = 4;
