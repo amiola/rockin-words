@@ -28,6 +28,9 @@ const Game = () => {
     const [score, setScore]=useState(0);
     
     const navigate = useNavigate();
+    
+    //Sounds
+    let correctSound = new Audio('/correct-ping.mp3');
 
     const myColors = [
     {backgroundColor: 'white', color:'black', border: '1px dotted gray'}, 
@@ -97,6 +100,8 @@ useEffect(()=>{
         });
         setTotalScore(totalScore + score);
         setWordsArr(wordsArr.filter((_,i)=>randomWord !== i));
+
+        correctSound.play();
       }else{
         if(wrongLetters.includes(e.target.textContent)) return ;
         setWrongLetters([...wrongLetters, e.target.textContent]);
