@@ -21,11 +21,11 @@ const Provider = ({children}) => {
   const allLettersArr = [...vowelsArr, ...consonantsArr];
 
   //Sounds
-  let correctSound = new Audio('/correct-ping.mp3');
-  let wrongSound = new Audio('/error.mp3');
-  let winSound = new Audio('/win.mp3');
-  let nextSound = new Audio('/next.mp3');
-  let gameSound = new Audio('/game.mp3');
+  let correctSound = new Audio('/sounds/correct-ping.mp3');
+  let wrongSound = new Audio('/sounds/error.mp3');
+  let winSound = new Audio('/sounds/win.mp3');
+  let nextSound = new Audio('/sounds/next.mp3');
+  let gameSound = new Audio('/sounds/game.mp3');
   
   const getWordsArr =()=>{
     const wordsArr = WORDS[game].map(word=>{

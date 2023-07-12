@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <>
     <section className="home">
-        <h1>Welcome to Rockin Words!</h1>
+        <h1>Welcome to Rockin' Words!</h1>
         <h2>Select game mode:</h2>
         <div className="mode-btns">
             <NavLink to='/game/cvc-words' className='btn c1' onClick={()=>{goToGame(0)}}>CVC Words</NavLink>
