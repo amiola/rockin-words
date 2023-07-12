@@ -1,0 +1,22 @@
+.end{
+    text-align: center;
+
+    .message{
+        margin-top: 20rem;
+        font-size: 7rem;
+    }
+    .score{
+        font-size: 5rem;
+        margin: 2rem;
+        padding: 1rem 2rem;
+        background: rgba($color: #000000, $alpha: 0.3);
+    }
+    .new-game{
+        padding: 1rem 2rem;
+        font-size: 2rem;
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        background: $color7;
+    }
+}

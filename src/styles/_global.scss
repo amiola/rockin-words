@@ -5,16 +5,26 @@
 }
 html{
     font-size: 62.5%;
-    background-color: $color1;
+    background: url('/background.png');
+    color: white;
 }
-h1,h2,h3,h4,h5,h6{
-    font-family: 'Roboto', sans-serif;
+h1,h2{
+    font-family: 'Bubblegum Sans', cursive;
 }
-p,label,a,input{
-    font-family: 'Roboto Condensed', sans-serif;
+p,label,a,input,h3,h4,h5,h6{
+    font-family: 'Open Sans', sans-serif;
 }
 
 a{
     text-decoration: none;
     color: black;
+}
+
+.btn{
+    cursor: pointer;
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.3), 0px 15px 30px rgba(0, 0, 0, 0.2);
+
+    &:hover{
+        transform: scale(1.05);
+    }
 }

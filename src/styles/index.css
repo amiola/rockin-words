@@ -6,15 +6,16 @@
 
 html {
   font-size: 62.5%;
-  background-color: #F7F7F7;
+  background: url("/background.png");
+  color: white;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto", sans-serif;
+h1, h2 {
+  font-family: "Bubblegum Sans", cursive;
 }
 
-p, label, a, input {
-  font-family: "Roboto Condensed", sans-serif;
+p, label, a, input, h3, h4, h5, h6 {
+  font-family: "Open Sans", sans-serif;
 }
 
 a {
@@ -22,16 +23,24 @@ a {
   color: black;
 }
 
+.btn {
+  cursor: pointer;
+  box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.3), 0px 15px 30px rgba(0, 0, 0, 0.2);
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+
 .home {
   text-align: center;
 }
 .home h1 {
-  margin: 10rem;
-  font-size: 3rem;
+  margin-top: 20rem;
+  font-size: 6rem;
 }
 .home h2 {
   margin: 5rem;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
 }
 .home .mode-btns {
   padding: 1rem;
@@ -44,13 +53,19 @@ a {
   display: block;
   border: none;
   border-radius: 2rem;
-  background: #21d4c5;
+  color: white;
   padding: 2rem;
   margin: 1rem;
   font-size: 2rem;
 }
-.home .btn:hover {
-  transform: scale(1.05);
+.home .c1 {
+  background: #0473b9;
+}
+.home .c2 {
+  background: #fe4354;
+}
+.home .c3 {
+  background: #8fe253;
 }
 
 .game {
@@ -59,42 +74,46 @@ a {
 }
 .game h1 {
   font-size: 3rem;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.4);
 }
 .game h1 span {
-  color: rgb(212, 26, 26);
+  color: #8fe253;
 }
 .game h4 {
   font-size: 2rem;
 }
-.game .total-score {
+.game .total-score, .game .rounds {
   position: absolute;
   top: 0;
-  right: 0;
   margin: 2.5rem 5rem;
+  padding: 1rem 2rem;
   font-size: 2rem;
 }
+.game .total-score {
+  right: 0;
+}
 .game .rounds {
-  position: absolute;
-  top: 0;
   left: 0;
-  margin: 2.5rem 5rem;
-  font-size: 2rem;
 }
 .game .new-game {
   position: absolute;
-  top: 5rem;
+  top: 7rem;
   left: 0;
-  margin: 2.5rem 6rem;
+  margin: 2.5rem 9rem;
   padding: 0.5rem 1rem;
   font-size: 2rem;
   border: none;
   border-radius: 0.5rem;
-  background: rgb(59, 59, 204);
+  background: #0473b9;
   color: white;
-  cursor: pointer;
 }
-.game .new-game:hover {
-  transform: scale(1.05);
+.game .reload {
+  position: absolute;
+  top: 8.5rem;
+  left: 25rem;
+  border-radius: 1rem;
+  font-size: 3.5rem;
 }
 .game .word {
   display: flex;
@@ -102,7 +121,6 @@ a {
   align-items: center;
   flex-direction: row;
   padding: 2rem;
-  margin: 1rem;
 }
 .game .word h2 {
   font-size: 5rem;
@@ -126,7 +144,7 @@ a {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  padding: 2rem;
+  padding: 1.5rem;
 }
 .game .letters button {
   font-size: 5rem;
@@ -135,10 +153,6 @@ a {
   border-radius: 1rem;
   border: none;
   background: #21d4c5;
-  cursor: pointer;
-}
-.game .letters button:hover {
-  transform: scale(1.05);
 }
 .game .correct-message {
   width: 50%;
@@ -163,9 +177,27 @@ a {
   color: white;
   border: 1px white;
   border-radius: 0.5rem;
-  background: rgb(59, 59, 204);
-  cursor: pointer;
+  background: #0473b9;
 }
-.game .next:hover {
-  transform: scale(1.05);
+
+.end {
+  text-align: center;
+}
+.end .message {
+  margin-top: 20rem;
+  font-size: 7rem;
+}
+.end .score {
+  font-size: 5rem;
+  margin: 2rem;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.3);
+}
+.end .new-game {
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  background: #0473b9;
 }/*# sourceMappingURL=index.css.map */

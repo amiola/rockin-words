@@ -9,7 +9,7 @@ const End = () => {
     <section className="end">
       <h1 className="message">Congratulations!!</h1>
       <h2 className="score">Total score: {totalScore}</h2>
-      <button className='new-game' onClick={newGame}>New game</button>
+      <button className='new-game btn' onClick={newGame}>New game</button>
     </section>
     </>
   )

@@ -2,12 +2,12 @@
     text-align: center;
 
     h1{
-        margin: 10rem;
-        font-size: 3rem;
+        margin-top: 20rem;
+        font-size: 6rem;
     }
     h2{
         margin: 5rem;
-        font-size: 2.5rem;
+        font-size: 3.5rem;
     }
     .mode-btns{
         padding: 1rem;
@@ -18,13 +18,18 @@
         display: block;
         border: none;
         border-radius: 2rem;
-        background: $color2;
+        color: white;
         padding: 2rem;
         margin: 1rem;
         font-size: 2rem;
-
-        &:hover{
-            transform: scale(1.05);
-        }
+    }
+    .c1{
+        background: $color7;
+    }
+    .c2{
+        background: $color6;
+    }
+    .c3{
+        background: $color10;
     }
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Context from './Context'
-import { NUMBER_OF_ROUNDS, WORDS } from '../assets/data'
+import { NUMBER_OF_OPTIONS, NUMBER_OF_ROUNDS, WORDS } from '../assets/data'
 import { useNavigate } from 'react-router-dom';
 
 const Provider = ({children}) => {
@@ -11,17 +11,18 @@ const Provider = ({children}) => {
   const [wordsArr, setWordsArr]=useState([]);
 
   const navigate = useNavigate();
+
+  const vowels = 'AEIOU';
+  const vowelsArr = vowels.split('');
+  const consonants = 'B, C, D, F, G, H, J, K, L, M, N, P, Q, R, S, T, V, W, X, Y, Z';
+  const consonantsArr = consonants.split(', ');
   
   const origWordsArr = WORDS.map(word=>{
     const wordSplit = word.split('');
     const vowels = [];
     const consonants = [];
     wordSplit.forEach((letter,i)=>{
-      if(letter === 'A' ||
-      letter === 'E' ||
-      letter === 'I' ||
-      letter === 'O' ||
-      letter === 'U' ){
+      if(vowelsArr.includes(letter)){
         vowels.push({letter: letter, index: i});
       }else{
         consonants.push({letter: letter, index: i});
@@ -63,17 +64,73 @@ function getRandomElementsFromArray(array, numElements) {
 }
 // getRandomElementsFromArray(['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L'], 3);
 
-const insertCorrectLetter = (array, letter)=>{
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1)); // Generate a random index from 0 to i
+
+    // Swap array[i] with array[j]
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+
+  return array;
+}
+
+
+const insertCorrectLetter = (array, letter, gameName)=>{
+  let otherLetter;
+  let workArr;
+
+  if(gameName === 'vowel'){
+    otherLetter = consonantsArr[randomNumber(consonantsArr.length)];
+  }else if(gameName === 'consonant'){
+    otherLetter = vowelsArr[randomNumber(vowelsArr.length)];
+  };
+
   if(array.includes(letter)){
-    return array;
+    workArr = [...array,otherLetter];
   }else{
     const randomI = randomNumber(array.length);
     array[randomI]=letter;
-    return array;
+    workArr = [...array,otherLetter];
   }
+
+  const newArr = shuffleArray(workArr);
+  return newArr;
 }
 // console.log(insertCorrectLetter(['B', 'C', 'D', 'F'], 'C'));
 // console.log(insertCorrectLetter(['B', 'C', 'D', 'F'], 'H'));
+
+const getWordToUse = (wordIndex, letterIndex)=>{
+  const wordToGuess = wordsArr[wordIndex].splittedWord.map((letter, i)=>{
+    if(letterIndex === i){
+      return '_';
+    }else{
+      return letter;
+    }
+  });
+
+  const wordToUse = {
+    word: wordToGuess
+  }
+  return wordToUse;
+};
+
+const getLettersToChoose = (letter, gameName) => {
+  let workArr = [];
+  
+  if(gameName === 'vowel'){
+    workArr = vowelsArr;
+  }else if(gameName === 'consonant'){
+    workArr = consonantsArr;
+  }
+
+  const randomArr = getRandomElementsFromArray(workArr, NUMBER_OF_OPTIONS-1);
+  const result = insertCorrectLetter(randomArr, letter, gameName);
+
+  return result;
+}
+// getLettersToChoose(correctLetter.letter);
+
 
 const init = ()=>{
   setWordsArr(origWordsArr);
@@ -86,9 +143,9 @@ useEffect(()=>{
   init();
 },[])
 
-useEffect(()=>{
-  console.log(wordsArr)
-},[wordsArr])
+// useEffect(()=>{
+//   console.log(wordsArr)
+// },[wordsArr])
 
 const newGame = ()=>{
   init();
@@ -99,6 +156,7 @@ const newGame = ()=>{
     <>
     <Context.Provider
     value={{
+      origWordsArr,
       wordsArr,
       setWordsArr,
       getRandomElementsFromArray,
@@ -109,7 +167,9 @@ const newGame = ()=>{
       round,
       setRound,
       maxRounds,
-      newGame
+      newGame,
+      getWordToUse,
+      getLettersToChoose
     }}
     >
         {children}

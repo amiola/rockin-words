@@ -9,14 +9,14 @@ const Game = () => {
       wordsArr,
       setWordsArr,
       randomNumber,
-      getRandomElementsFromArray,
-      insertCorrectLetter,
       totalScore,
       setTotalScore,
       round,
       setRound,
       maxRounds,
-    newGame} = useContext(Context)
+      newGame,
+      getWordToUse,
+      getLettersToChoose} = useContext(Context)
 
     const [randomWord, setRandomWord]=useState(0);
     const [wordToUse, setWordToUse]=useState({});
@@ -57,16 +57,17 @@ useEffect(()=>{
     const randomI = randomNumber(wordsArr[randomWord].consonants.length);
     setCorrectLetter(wordsArr[randomWord].consonants[randomI]);
   }
+  // console.log('1: ', randomWord);
 },[randomWord]);
 
 useEffect(()=>{
   setWordToUse(getWordToUse(randomWord, correctLetter.index));
-  setLetters(getLettersToChoose(correctLetter.letter));
-  // console.log(1, correctLetter);
+  setLetters(getLettersToChoose(correctLetter.letter, gameName));
+  // console.log('2:', correctLetter);
 },[correctLetter])
 
 // useEffect(()=>{
-//   console.log(2, wordToUse)
+//   console.log('3: ', wordToUse);
 // },[wordToUse])
 
 // useEffect(()=>{
@@ -76,38 +77,6 @@ useEffect(()=>{
 // useEffect(()=>{
 //   console.log(wordsArr)
 // },[wordsArr])
-
-    const getWordToUse = (wordIndex, letterIndex)=>{
-      const wordToGuess = wordsArr[wordIndex].splittedWord.map((letter, i)=>{
-        if(letterIndex === i){
-          return '_';
-        }else{
-          return letter;
-        }
-      });
-
-      const wordToUse = {
-        word: wordToGuess
-      }
-      return wordToUse;
-    };
-
-    const getLettersToChoose = (letter) => {
-      let workArr = [];
-      if(gameName === 'vowel'){
-        const vowels = 'AEIOU';
-        workArr = vowels.split('');
-      }else if(gameName === 'consonant'){
-        const consonants = 'B, C, D, F, G, H, J, K, L, M, N, P, Q, R, S, T, V, W, X, Y, Z';
-        workArr = consonants.split(', ');
-      }
-
-      const randomArr = getRandomElementsFromArray(workArr, NUMBER_OF_OPTIONS);
-      const result = insertCorrectLetter(randomArr, letter);
-
-      return result;
-    }
-    // getLettersToChoose(correctLetter.letter);
 
     const clickedLetter = (e)=>{
       if(correctClick.state){
@@ -120,7 +89,7 @@ useEffect(()=>{
           class: 'correct'
         });
         setMessage({
-          message: '✨🎉 Great! Correct Letter! 🎉✨',
+          message: '✨🎉 Great job! 🎉✨',
           class: 'correct-message'
         });
         setTotalScore(totalScore + score);
@@ -150,10 +119,14 @@ useEffect(()=>{
   return (
     <>
     <section className="game">
-    <h1>Game: Find the missing <span>{gameName}</span></h1>
+    { (gameName==='cvc-words')?
+      <h1>Game: Find the missing <span>letter</span></h1>
+      :
+      <h1>Game: Find the missing <span>{gameName}</span></h1>}
     <h2 className='total-score'>Total score: {totalScore}</h2>
     <h2 className='rounds'>Round {round} from {maxRounds}</h2>
-    <button className="new-game"  onClick={newGame}>New game</button>
+    <button className="new-game btn"  onClick={newGame}>New game</button>
+    <button className="reload btn"  onClick={init}>🔄</button>
     <div className="word">
     {wordToUse.word && wordToUse.word.map((letter, i)=>(
       (letter === '_')?
@@ -162,27 +135,27 @@ useEffect(()=>{
       <h2 key={i}>{letter}</h2>
     ))}
     </div>
-    <h4>Choose a letter:</h4>
+    <h4>Choose the missing letter:</h4>
     <div className="letters">
-      {letters.map((letter,i)=>(
+      {letters[0] && letters.map((letter,i)=>(
         (correctLetter.letter === letter && correctClick.state)?
         <button key={i} onClick={clickedLetter} style={myColors[1]}>{letter}</button>
         :
         (wrongLetters.find(l=>l===letter))?
         <button key={i} onClick={clickedLetter} style={myColors[2]}>{letter}</button>
         :
-        <button key={i} onClick={clickedLetter} style={myColors[0]}>{letter}</button>
+        <button key={i} className='btn' onClick={clickedLetter} style={myColors[0]}>{letter}</button>
 ))}
     </div>
     <div className={message.class}>
-      {message.message}
+      <p>{message.message}</p>
     </div>
     {correctClick.state && (
       <>
       <div className="points">
       <h2> + {score} point{score===1?'':'s'} </h2>
       </div>
-      <button className='next' onClick={nextWord}>Next word ➡</button>
+      <button className='next btn' onClick={nextWord}>Next word ➡</button>
       </>
     )
     }

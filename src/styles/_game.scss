@@ -3,8 +3,10 @@
     text-align: center;
     h1{
         font-size: 3rem;
+        padding: 1rem 2rem;
+        background: rgba($color: #000000, $alpha: 0.4);
         span{
-             color: rgb(212, 26, 26);
+             color: $color10;
         }
     }
 
@@ -12,42 +14,43 @@
         font-size: 2rem;
     }
 
-    .total-score{
+    .total-score, .rounds{
         position: absolute;
         top: 0;
-        right: 0;
         margin: 2.5rem 5rem;
+        padding: 1rem 2rem;
         font-size: 2rem;
+        // background: rgba($color: #000000, $alpha: 0.4);
+    }
+    .total-score{
+        right: 0;
     }
     .rounds{
-        position: absolute;
-        top: 0;
         left: 0;
-        margin: 2.5rem 5rem;
-        font-size: 2rem;
     }
     .new-game{
         position: absolute;
-        top: 5rem;
+        top: 7rem;
         left: 0;
-        margin: 2.5rem 6rem;
+        margin: 2.5rem 9rem;
         padding: 0.5rem 1rem;
         font-size: 2rem;
         border: none;
         border-radius: 0.5rem;
-        background: $color4;
+        background: $color7;
         color: white;
-        cursor: pointer;
-
-        &:hover{
-            transform: scale(1.05);
-        }
+    }
+    .reload{
+        position: absolute;
+        top: 8.5rem;
+        left: 25rem;
+        border-radius: 1rem;
+        font-size: 3.5rem;
     }
 
     .word{
         @include flex(center, center, row);
         padding: 2rem;
-        margin: 1rem;
 
         h2{
             font-size: 5rem;
@@ -70,7 +73,7 @@
 
     .letters{
         @include flex(center, center, row);
-        padding: 2rem;
+        padding: 1.5rem;
         button{
             font-size: 5rem;
             padding: 2rem;
@@ -78,11 +81,6 @@
             border-radius: 1rem;
             border: none;
             background: $color2;
-            cursor: pointer;
-
-            &:hover{
-                transform: scale(1.05);
-            }
         }
     }
 
@@ -111,11 +109,7 @@
         color: white;
         border: 1px white;
         border-radius: 0.5rem;
-        background: $color4;
-        cursor: pointer;
-
-        &:hover{
-            transform: scale(1.05);
-        }
+        background: $color7;
     }
+
 }

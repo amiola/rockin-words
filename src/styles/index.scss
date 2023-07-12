@@ -11,6 +11,14 @@ $color2: #21d4c5;
 $color3: rgba(200, 203, 206, 0.5);
 $color4: rgb(59, 59, 204);
 
+$color5: #49d7e7;
+$color6: #fe4354;
+$color7: #0473b9;
+$color8: #ffe300;
+$color9: #d74ba0;
+$color10: #8fe253;
+
+
 // Declaring functions
 @mixin flex($justify, $align, $direction) {
     display: flex;
@@ -23,3 +31,4 @@ $color4: rgb(59, 59, 204);
 @import "global";
 @import "home";
 @import "game";
+@import "end";
