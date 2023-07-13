@@ -73,7 +73,7 @@ a {
   text-align: center;
 }
 .game h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   padding: 1rem 2rem;
   background: rgba(0, 0, 0, 0.4);
 }
@@ -88,7 +88,7 @@ a {
   top: 0;
   margin: 2.5rem 5rem;
   padding: 1rem 2rem;
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 .game .total-score {
   right: 0;
@@ -98,11 +98,11 @@ a {
 }
 .game .new-game {
   position: absolute;
-  top: 7rem;
+  top: 8rem;
   left: 0;
   margin: 2.5rem 9rem;
   padding: 0.5rem 1rem;
-  font-size: 2rem;
+  font-size: 2.3rem;
   border: none;
   border-radius: 0.5rem;
   background: #0473b9;
@@ -110,17 +110,22 @@ a {
 }
 .game .reload {
   position: absolute;
-  top: 8.5rem;
+  top: 10rem;
   left: 25rem;
   border-radius: 1rem;
   font-size: 3.5rem;
+}
+.game img {
+  margin-top: 3rem;
+  height: 20rem;
+  border-radius: 2rem;
 }
 .game .word {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  padding: 2rem;
+  padding: 1.5rem;
 }
 .game .word h2 {
   font-size: 5rem;
@@ -144,7 +149,7 @@ a {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  padding: 1.5rem;
+  padding: 1rem;
 }
 .game .letters button {
   font-size: 5rem;
@@ -154,26 +159,39 @@ a {
   border: none;
   background: #21d4c5;
 }
+.game .msg {
+  position: absolute;
+  top: 50%;
+  left: 5rem;
+  width: 25%;
+}
 .game .correct-message {
-  width: 50%;
   margin: auto;
-  font-size: 3.5rem;
-  padding: 1rem 2rem;
+  font-size: 3rem;
+  padding: 5rem 0.5rem;
   border-radius: 1rem;
   background-color: palegreen;
   color: green;
 }
 .game .wrong-message {
   font-size: 3rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+}
+.game .points-next {
+  position: absolute;
+  top: 50%;
+  right: 15rem;
 }
 .game .points {
-  font-size: 2rem;
+  font-size: 3rem;
   margin: 1rem;
 }
 .game .next {
   margin: 2rem;
   padding: 1rem 2rem;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: white;
   border: 1px white;
   border-radius: 0.5rem;
@@ -191,6 +209,7 @@ a {
   font-size: 5rem;
   margin: 2rem;
   padding: 1rem 2rem;
+  border-radius: 1rem;
   background: rgba(0, 0, 0, 0.3);
 }
 .end .new-game {

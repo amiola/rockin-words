@@ -42,12 +42,16 @@ const Provider = ({children}) => {
         allLetters.push({letter: letter, index: i});
       }
      )
+      
+      const img = '/img/'+ word.toLowerCase() +'.gif'
+
       return {
         word: word,
         splittedWord: wordSplit,
         vowels: vowels,
         consonants: consonants,
-        allLetters: allLetters
+        allLetters: allLetters,
+        img: img
       }
     })
     return wordsArr;
@@ -141,7 +145,8 @@ const getWordToUse = (wordIndex, letterIndex)=>{
   });
 
   const wordToUse = {
-    word: wordToGuess
+    word: wordToGuess,
+    img: wordsArr[wordIndex].img
   }
   return wordToUse;
 };

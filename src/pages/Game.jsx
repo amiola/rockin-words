@@ -95,7 +95,7 @@ useEffect(()=>{
         });
         setMessage({
           message: '✨🎉 Great job! 🎉✨',
-          class: 'correct-message'
+          class: 'msg correct-message'
         });
         setTotalScore(totalScore + score);
         setWordsArr(wordsArr.filter((_,i)=>randomWord !== i));
@@ -106,7 +106,7 @@ useEffect(()=>{
         setWrongLetters([...wrongLetters, e.target.textContent]);
         setMessage({
           message: 'Almost there! Please, try again...',
-          class: 'wrong-message'
+          class: 'msg wrong-message'
         });
         setScore(score-1);
         wrongSound.play();
@@ -137,6 +137,7 @@ useEffect(()=>{
     <h2 className='rounds'>Round {round} from {maxRounds}</h2>
     <button className="new-game btn"  onClick={newGame}>New game</button>
     <button className="reload btn"  onClick={init}>🔄</button>
+    <img src={wordToUse.img} alt="image" />
     <div className="word">
     {wordToUse.word && wordToUse.word.map((letter, i)=>(
       (letter === '_')?
@@ -161,12 +162,12 @@ useEffect(()=>{
       <p>{message.message}</p>
     </div>
     {correctClick.state && (
-      <>
+      <div className='points-next'>
       <div className="points">
       <h2> + {score} point{score===1?'':'s'} </h2>
       </div>
       <button className='next btn' onClick={nextWord}>Next word ➡</button>
-      </>
+      </div>
     )
     }
     </section>
