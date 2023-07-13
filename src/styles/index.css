@@ -179,6 +179,12 @@ a {
   border-radius: 1rem;
   background: rgba(0, 0, 0, 0.3);
 }
+.game .reload-msg {
+  font-size: 3rem;
+  margin: 20rem;
+  width: 30%;
+  margin: auto;
+}
 .game .points-next {
   position: absolute;
   top: 50%;

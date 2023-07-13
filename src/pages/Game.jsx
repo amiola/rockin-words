@@ -28,6 +28,7 @@ const Game = () => {
     const [wrongLetters, setWrongLetters]=useState([]);
     const [message, setMessage]=useState({});
     const [score, setScore]=useState(0);
+    const [reloadMsg, setReloadMsg]=useState('');
     
     const navigate = useNavigate();
 
@@ -44,6 +45,7 @@ const init = ()=>{
       setWordToUse({});
       setWrongLetters([]);
       setScore(4);
+      setReloadMsg('');
     }
 
 
@@ -126,6 +128,13 @@ useEffect(()=>{
       
     }
 
+    const getReloadMsg = ()=>{
+      setTimeout(()=>{
+        setReloadMsg('An error ocurred. Please, click the reload button (🔄) to get another word')
+      },500)
+      return reloadMsg;
+    }
+
   return (
     <>
     <section className="game">
@@ -137,7 +146,7 @@ useEffect(()=>{
     <h2 className='rounds'>Round {round} from {maxRounds}</h2>
     <button className="new-game btn"  onClick={newGame}>New game</button>
     <button className="reload btn"  onClick={init}>🔄</button>
-    <img src={wordToUse.img} alt="image" />
+    {!wordToUse.word?'':<img src={wordToUse.img} alt="image" />}
     <div className="word">
     {wordToUse.word && wordToUse.word.map((letter, i)=>(
       (letter === '_')?
@@ -146,7 +155,7 @@ useEffect(()=>{
       <h2 key={i}>{letter}</h2>
     ))}
     </div>
-    <h4>Choose the missing letter:</h4>
+    {!wordToUse.word? <h4 className='reload-msg'>{getReloadMsg()}</h4> :<h4>Choose the missing letter:</h4>}
     <div className="letters">
       {letters[0] && letters.map((letter,i)=>(
         (correctLetter.letter === letter && correctClick.state)?
