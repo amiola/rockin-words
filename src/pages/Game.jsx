@@ -146,7 +146,7 @@ useEffect(()=>{
     <h2 className='rounds'>Round {round} from {maxRounds}</h2>
     <button className="new-game btn"  onClick={newGame}>New game</button>
     <button className="reload btn"  onClick={init}>🔄</button>
-    {!wordToUse.word?'':<img src={wordToUse.img} alt="image" />}
+    {(gameName==='cvc-words')?'': (!wordToUse.word)?'':<img src={wordToUse.img} alt="image" />}
     <div className="word">
     {wordToUse.word && wordToUse.word.map((letter, i)=>(
       (letter === '_')?
